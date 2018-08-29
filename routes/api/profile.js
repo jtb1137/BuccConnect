@@ -32,4 +32,58 @@ router.get(
   }
 );
 
+// @route POST api/profile
+// @desc Create or update user profile
+// @access Private
+router.post(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const profilefields = {};
+    profilefields.user = req.user.id;
+    if (req.body.username) profilefields.username = req.body.username;
+    if (req.body.company) profilefields.company = req.body.company;
+    if (req.body.website) profilefields.website = req.body.website;
+    if (req.body.location) profilefields.location = req.body.location;
+    if (req.body.status) profilefields.status = req.body.status;
+    if (req.body.bio) profilefields.bio = req.body.bio;
+    // skills from CSV
+    if (typeof req.body.skills !== "undefined")
+      profilefields.skills = req.body.skills.split(",");
+    // Social
+    profilefields.social = {};
+    if (req.body.githubusername)
+      profilefields.social.githubusername = req.body.githubusername;
+    if (req.body.youtube) profilefields.social.youtube = req.body.youtube;
+    if (req.body.twitter) profilefields.social.twitter = req.body.twitter;
+    if (req.body.facebook) profilefields.social.facebook = req.body.facebook;
+    if (req.body.linkedin) profilefields.social.linkedin = req.body.linkedin;
+    if (req.body.instagram) profilefields.social.instagram = req.body.instagram;
+
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      if (profile) {
+        // Update the profile
+        Profile.findOneAndUpdate(
+          { user: req.user.id },
+          { $set: profilefields },
+          { new: true }
+        ).then(profile => {
+          res.json(profile);
+        });
+      } else {
+        // Create a profile
+        Profile.findOne({ username: profilefields.username }).then(profile => {
+          if (profile) {
+            errors.username = "That username already exists.";
+            res.status(404).json(errors);
+          }
+          new Profile(profilefields).save().then(profile => {
+            res.json(profile);
+          });
+        });
+      }
+    });
+  }
+);
+
 module.exports = router;

@@ -31,9 +31,6 @@ const ProfileSchema = new Schema({
   bio: {
     type: String
   },
-  githubusername: {
-    type: String
-  },
   experience: [
     {
       title: {
@@ -94,6 +91,9 @@ const ProfileSchema = new Schema({
     }
   ],
   social: {
+    githubusername: {
+      type: String
+    },
     youtube: {
       type: String
     },
