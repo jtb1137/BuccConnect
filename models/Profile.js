@@ -74,11 +74,11 @@ const ProfileSchema = new Schema({
         type: String,
         required: true
       },
-      from: {
+      startdate: {
         type: Date,
         required: true
       },
-      to: {
+      enddate: {
         type: Date
       },
       current: {
