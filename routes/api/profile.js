@@ -198,6 +198,7 @@ router.post(
   }
 );
 
+// @TODO - Fix - Can't grab id from params?
 // @route   DELETE api/profile/experience/:exp_id
 // @desc    Delete experience
 // @access  Private
@@ -218,7 +219,7 @@ router.delete(
   }
 );
 
-// @TODO - Test
+// @TODO - Fix
 // @route   DELETE api/profile/education/:edu_id
 // @desc    Delete education
 // @access  Private
@@ -239,7 +240,7 @@ router.delete(
   }
 );
 
-// @TODO - Test
+// @TODO - Fix
 // @route   DELETE api/profile/
 // @desc    Delete user and profile
 // @access  Private
