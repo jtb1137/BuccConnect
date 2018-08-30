@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import TextFieldGroup from "../shared/TextFieldGroup";
 
 class Register extends Component {
   constructor() {
@@ -58,66 +59,38 @@ class Register extends Component {
             <h2 className="display-4 text-center">Sign Up</h2>
             <p className="lead text-center">Create your BuccConnect account.</p>
             <form noValidate onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors.name
-                  })}
-                  placeholder="Name"
-                  name="name"
-                  value={this.state.name}
-                  onChange={this.onChange}
-                />
-                {errors.name && (
-                  <div className="invalid-feedback">{errors.name}</div>
-                )}
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors.email
-                  })}
-                  placeholder="Email"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                />
-                {errors.email && (
-                  <div className="invalid-feedback">{errors.email}</div>
-                )}
-              </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors.password
-                  })}
-                  placeholder="Password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-                {errors.password && (
-                  <div className="invalid-feedback">{errors.password}</div>
-                )}
-              </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors.password2
-                  })}
-                  placeholder="Confirm Password"
-                  name="password2"
-                  value={this.state.password2}
-                  onChange={this.onChange}
-                />
-                {errors.password2 && (
-                  <div className="invalid-feedback">{errors.password2}</div>
-                )}
-              </div>
+              <TextFieldGroup
+                type="text"
+                error={errors.name}
+                placeholder="Name"
+                name="name"
+                value={this.state.name}
+                onChange={this.onChange}
+              />
+              <TextFieldGroup
+                type="email"
+                error={errors.email}
+                placeholder="Email Address"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChange}
+              />
+              <TextFieldGroup
+                type="password"
+                error={errors.name}
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChange}
+              />
+              <TextFieldGroup
+                type="password"
+                error={errors.password2}
+                placeholder="Confirm Password"
+                name="password2"
+                value={this.state.password2}
+                onChange={this.onChange}
+              />
               <input type="submit" value="Submit" className="btn btn-block" />
             </form>
           </div>
