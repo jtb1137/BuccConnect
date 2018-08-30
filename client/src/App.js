@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import Nav from "./components/layout/Nav";
 import Footer from "./components/layout/Footer";
@@ -10,6 +13,19 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 
 import "./App.css";
+
+// Check for jwt and persist being logged in across all pages
+if (localStorage.jwtToken) {
+  setAuthToken(localStorage.jwtToken);
+  const decodedToken = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decodedToken));
+
+  const currentTime = Date.now() / 1000;
+  if (decodedToken.exp < currentTime) {
+    store.dispatch(logoutUser());
+    window.location.href = "/login";
+  }
+}
 
 class App extends Component {
   render() {

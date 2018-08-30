@@ -1,8 +1,47 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 
 class Nav extends Component {
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
+
   render() {
+    const { isAuthenticated } = this.props.auth;
+
+    const authorized = (
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <a
+            href="!#"
+            onClick={this.onLogoutClick.bind(this)}
+            className="nav-link"
+          >
+            Logout
+          </a>
+        </li>
+      </ul>
+    );
+
+    const guest = (
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <Link to="/register" className="nav-link">
+            Sign Up
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/login" className="nav-link">
+            Login
+          </Link>
+        </li>
+      </ul>
+    );
+
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
@@ -25,18 +64,7 @@ class Nav extends Component {
                 </Link>
               </li>
             </ul>
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to="/register" className="nav-link">
-                  Sign Up
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  Login
-                </Link>
-              </li>
-            </ul>
+            {isAuthenticated ? authorized : guest}
           </div>
         </div>
       </nav>
@@ -44,4 +72,16 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+Nav.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Nav);
