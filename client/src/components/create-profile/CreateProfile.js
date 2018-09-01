@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import TextFieldGroup from "../shared/TextFieldGroup";
 import TextAreaFieldGroup from "../shared/TextAreaFieldGroup";
 import InputGroup from "../shared/InputGroup";
 import SelectFieldGroup from "../shared/SelectFieldGroup";
+import { createProfile } from "../../actions/profileActions";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -29,14 +31,36 @@ class CreateProfile extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   onSubmit = e => {
-    e.prevenDefault();
+    e.preventDefault();
 
-    console.log("onSubmit");
+    const profileData = {
+      username: this.state.username,
+      company: this.state.company,
+      website: this.state.website,
+      location: this.state.location,
+      status: this.state.status,
+      skills: this.state.skills,
+      bio: this.state.bio,
+      github: this.state.github,
+      twitter: this.state.twitter,
+      facebook: this.state.facebook,
+      linkedin: this.state.linkedin,
+      youtube: this.state.youtube,
+      instagram: this.state.instagram
+    };
+
+    this.props.createProfile(profileData, this.props.history);
   };
 
   render() {
@@ -53,6 +77,46 @@ class CreateProfile extends Component {
             value={this.state.github}
             onChange={this.onChange}
             error={errors.github}
+          />
+          <InputGroup
+            placeholder="Twitter URL"
+            name="twitter"
+            icon="fab fa-twitter"
+            value={this.state.twitter}
+            onChange={this.onChange}
+            error={errors.twitter}
+          />
+          <InputGroup
+            placeholder="Facebook URL"
+            name="facebook"
+            icon="fab fa-facebook"
+            value={this.state.facebook}
+            onChange={this.onChange}
+            error={errors.facebook}
+          />
+          <InputGroup
+            placeholder="LinkedIn URL"
+            name="linkedin"
+            icon="fab fa-linkedin"
+            value={this.state.linkedin}
+            onChange={this.onChange}
+            error={errors.linkedin}
+          />
+          <InputGroup
+            placeholder="Youtube URL"
+            name="youtube"
+            icon="fab fa-youtube"
+            value={this.state.youtube}
+            onChange={this.onChange}
+            error={errors.youtube}
+          />
+          <InputGroup
+            placeholder="Instagram URL"
+            name="instagram"
+            icon="fab fa-instagram"
+            value={this.state.instagram}
+            onChange={this.onChange}
+            error={errors.instagram}
           />
         </div>
       );
@@ -120,14 +184,15 @@ class CreateProfile extends Component {
                 onChange={this.onChange}
                 error={errors.bio}
               />
-              <div>
+              <div className="mb-3">
                 <button
+                  type="button"
                   onClick={() => {
                     this.setState(prevState => ({
                       displaySocialInputs: !prevState.displaySocialInputs
                     }));
                   }}
-                  className="btn btn-dark"
+                  className="btn btn-dark btn-block"
                 >
                   Add Social Network Links
                 </button>
@@ -152,4 +217,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(
+  mapStateToProps,
+  { createProfile }
+)(withRouter(CreateProfile));
