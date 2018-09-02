@@ -2,25 +2,44 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../actions/profileActions";
+import { getProfile, deleteAccount } from "../../actions/profileActions";
 import Loading from "../shared/Loading";
 import isEmpty from "../../validation/is-empty";
+import ProfileButtons from "./ProfileButtons";
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.getCurrentProfile();
+    this.props.getProfile();
   }
+
+  onDeleteClick = e => {
+    this.props.deleteAccount();
+  };
 
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
     let dashContent;
 
-    if (profile === null || loading) {
+    // if (profile === null || loading) {
+    if (loading) {
       dashContent = <Loading />;
     } else {
       if (!isEmpty(profile)) {
-        dashContent = <h2>Display profile</h2>;
+        dashContent = (
+          <div>
+            <h4 className="lead">
+              Welcome{" "}
+              <Link to={`/profile/${profile.username}`}>{user.name}</Link>
+            </h4>
+            <ProfileButtons />
+            <div>
+              <button onClick={this.onDeleteClick} className="btn btn-danger">
+                Delete My Account
+              </button>
+            </div>
+          </div>
+        );
       } else {
         dashContent = (
           <div>
@@ -48,7 +67,8 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
+  getProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
@@ -60,5 +80,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }
+  { getProfile, deleteAccount }
 )(Dashboard);

@@ -67,7 +67,6 @@ class CreateProfile extends Component {
     const { errors, displaySocialInputs } = this.state;
     let socialInputs;
     if (displaySocialInputs) {
-      // @TODO - finish
       socialInputs = (
         <div>
           <InputGroup

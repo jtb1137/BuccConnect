@@ -3,12 +3,13 @@ import {
   GET_PROFILE,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  GET_ERRORS
+  GET_ERRORS,
+  SET_CURRENT_USER
 } from "./types";
 
 // Current profile
-export const getCurrentProfile = () => dispatch => {
-  dispatch(setProfileLoading());
+export const getProfile = () => dispatch => {
+  //dispatch(setProfileLoading());
   axios
     .get("/api/profile")
     .then(res =>
@@ -42,7 +43,7 @@ export const clearCurrentProfile = () => {
 // Create profile
 export const createProfile = (profileData, history) => dispatch => {
   axios
-    .post("./api/profile", profileData)
+    .post("/api/profile", profileData)
     .then(res => history.push("/dashboard"))
     .catch(err =>
       dispatch({
@@ -50,4 +51,24 @@ export const createProfile = (profileData, history) => dispatch => {
         payload: err.response.data
       })
     );
+};
+
+// Delete account with profile
+export const deleteAccount = () => dispatch => {
+  if (window.confirm("Are you sure you want to delete your account?")) {
+    axios
+      .delete("/api/profile")
+      .then(res =>
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {}
+        })
+      )
+      .catch(err =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+        })
+      );
+  }
 };
