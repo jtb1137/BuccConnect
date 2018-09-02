@@ -21,8 +21,7 @@ class Dashboard extends Component {
     const { profile, loading } = this.props.profile;
     let dashContent;
 
-    // if (profile === null || loading) {
-    if (loading) {
+    if (profile === null || loading) {
       dashContent = <Loading />;
     } else {
       if (!isEmpty(profile)) {
