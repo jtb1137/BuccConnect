@@ -7,6 +7,7 @@ import Loading from "../shared/Loading";
 import isEmpty from "../../validation/is-empty";
 import ProfileButtons from "./ProfileButtons";
 import Experience from "./Experience";
+import Education from "./Education";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -34,6 +35,7 @@ class Dashboard extends Component {
             </h4>
             <ProfileButtons />
             <Experience experience={profile.experience} />
+            <Education education={profile.education} />
             <div>
               <button onClick={this.onDeleteClick} className="btn btn-danger">
                 Delete My Account

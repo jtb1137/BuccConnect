@@ -75,18 +75,21 @@ class AddExperience extends Component {
                   name="company"
                   value={this.state.company}
                   error={errors.company}
+                  onChange={this.onChange}
                 />
                 <TextFieldGroup
                   placeholder="Job Title"
                   name="title"
                   value={this.state.title}
                   error={errors.title}
+                  onChange={this.onChange}
                 />
                 <TextFieldGroup
                   placeholder="Location"
                   name="location"
                   value={this.state.location}
                   error={errors.location}
+                  onChange={this.onChange}
                 />
                 <TextFieldGroup
                   placeholder="Start Date"
@@ -94,13 +97,16 @@ class AddExperience extends Component {
                   value={this.state.startdate}
                   error={errors.startdate}
                   type="date"
+                  onChange={this.onChange}
                 />
                 <TextFieldGroup
                   placeholder="End Date"
                   name="enddate"
+                  type="data"
                   value={this.state.enddate}
                   error={errors.enddate}
                   disabled={this.state.disabled ? "disabled" : ""}
+                  onChange={this.onChange}
                 />
                 <div className="form-check mb-4">
                   <input

@@ -75,18 +75,21 @@ class AddEducation extends Component {
                   name="school"
                   value={this.state.school}
                   error={errors.school}
+                  onChange={this.onChange}
                 />
                 <TextFieldGroup
                   placeholder="Degree or Certification"
                   name="degree"
                   value={this.state.degree}
                   error={errors.degree}
+                  onChange={this.onChange}
                 />
                 <TextFieldGroup
                   placeholder="Field of Study"
                   name="fieldofstudy"
                   value={this.state.fieldofstudy}
                   error={errors.fieldofstudy}
+                  onChange={this.onChange}
                 />
                 <TextFieldGroup
                   placeholder="Start Date"
@@ -94,13 +97,16 @@ class AddEducation extends Component {
                   value={this.state.startdate}
                   error={errors.startdate}
                   type="date"
+                  onChange={this.onChange}
                 />
                 <TextFieldGroup
                   placeholder="End Date"
                   name="enddate"
+                  type="date"
                   value={this.state.enddate}
                   error={errors.enddate}
                   disabled={this.state.disabled ? "disabled" : ""}
+                  onChange={this.onChange}
                 />
                 <div className="form-check mb-4">
                   <input
