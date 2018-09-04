@@ -6,6 +6,7 @@ import { getProfile, deleteAccount } from "../../actions/profileActions";
 import Loading from "../shared/Loading";
 import isEmpty from "../../validation/is-empty";
 import ProfileButtons from "./ProfileButtons";
+import Experience from "./Experience";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -32,6 +33,7 @@ class Dashboard extends Component {
               <Link to={`/profile/${profile.username}`}>{user.name}</Link>
             </h4>
             <ProfileButtons />
+            <Experience experience={profile.experience} />
             <div>
               <button onClick={this.onDeleteClick} className="btn btn-danger">
                 Delete My Account
