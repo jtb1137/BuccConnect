@@ -27,6 +27,25 @@ export const getProfile = () => dispatch => {
     );
 };
 
+// Get profile by username
+export const getProfileByUsername = username => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/username/${username}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: null
+      })
+    );
+};
+
 // Loading
 export const setProfileLoading = () => {
   return {
