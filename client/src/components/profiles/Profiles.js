@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Loading from "../shared/Loading";
 import { getProfiles } from "../../actions/profileActions";
 import isEmpty from "../../validation/is-empty";
+import ProfileItem from "./ProfileItem";
 
 class Profiles extends Component {
   componentDidMount() {
@@ -17,7 +18,9 @@ class Profiles extends Component {
       profileItems = <Loading />;
     } else {
       if (profiles.length > 0) {
-        profileItems = <h1>Profiles listed here</h1>;
+        profileItems = profiles.map(profile => (
+          <ProfileItem key={profile._id} profile={profile} />
+        ));
       } else {
         profileItems = <h4>No profiles found</h4>;
       }
