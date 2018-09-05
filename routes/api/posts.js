@@ -41,7 +41,7 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { errors, isEmpty } = validatePostInput(req.body);
+    const { errors, isValid } = validatePostInput(req.body);
 
     if (!isValid) {
       return res.status(400).json(errors);
@@ -147,7 +147,7 @@ router.post(
   "/comment/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { errors, isEmpty } = validatePostInput(req.body);
+    const { errors, isValid } = validatePostInput(req.body);
 
     if (!isValid) {
       return res.status(400).json(errors);

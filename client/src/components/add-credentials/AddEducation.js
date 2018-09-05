@@ -57,7 +57,7 @@ class AddEducation extends Component {
   };
 
   render() {
-    const { errors } = this.state;
+    const { errors } = this.props;
 
     return (
       <div>
