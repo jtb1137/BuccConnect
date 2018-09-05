@@ -36,8 +36,11 @@ class Profile extends Component {
             <div className="col-md-6" />
           </div>
           <Header profile={profile} />
-          <About />
-          <Credentials />
+          <About profile={profile} />
+          <Credentials
+            education={profile.education}
+            experience={profile.experience}
+          />
           <GithubRepos />
         </div>
       );
