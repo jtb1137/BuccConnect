@@ -1,3 +1,5 @@
+import { ADD_POST } from "../actions/types";
+
 const initialState = {
   posts: [],
   post: {},
@@ -21,7 +23,8 @@ export default function(state = initialState, action) {
       };
     case ADD_POST:
       return {
-        ...state
+        ...state,
+        posts: [action.payload, ...state.posts]
       };
     case DELETE_POST:
       return {
