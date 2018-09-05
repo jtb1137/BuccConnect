@@ -38,4 +38,8 @@ class About extends Component {
   }
 }
 
+About.propTypes = {
+  profile: PropTypes.object.isRequired
+};
+
 export default About;
