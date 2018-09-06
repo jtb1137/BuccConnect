@@ -10,12 +10,12 @@ class PostItem extends Component {
     this.props.deletePost(this.props.post._id);
   };
 
-  onLikeClick = (e, id) => {
-    this.props.addLike(id);
+  onLikeClick = e => {
+    this.props.addLike(this.props.post._id);
   };
 
-  onRemoveLikeClick = (e, id) => {
-    this.props.removeLike(id);
+  onRemoveLikeClick = e => {
+    this.props.removeLike(this.props.post._id);
   };
 
   userLiked = likes => {
@@ -40,10 +40,7 @@ class PostItem extends Component {
             <p>{post.text}</p>
             {showActions ? (
               <span>
-                <button
-                  onClick={this.onLikeClick(post._id)}
-                  className="btn mr-1"
-                >
+                <button onClick={this.onLikeClick} className="btn mr-1">
                   <i
                     className={classnames("fas fa-thumbs-up", {
                       "text-info": this.userLiked(post.likes)
@@ -51,10 +48,7 @@ class PostItem extends Component {
                   />
                   <span>{post.likes.length}</span>
                 </button>
-                <button
-                  onClick={this.onRemoveLikeClick(post._id)}
-                  className="btn mr-1"
-                >
+                <button onClick={this.onRemoveLikeClick} className="btn mr-1">
                   <i className="text-info fas fa-thumbs-down" />
                   <span>{post.likes.length}</span>
                 </button>
