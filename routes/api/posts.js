@@ -9,14 +9,14 @@ const Post = require("../../models/Post");
 const Profile = require("../../models/Profile");
 
 // @route   GET api/posts/test
-// @desc    Tests post route
+// @desc    Tests
 // @access  Public
 router.get("/test", (req, res) => {
   res.json({ message: "Posts functional" });
 });
 
 // @route   Get api/posts
-// @desc    Get posts
+// @desc    Get All Posts
 // @access  Public
 router.get("/", (req, res) => {
   Post.find()
@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
 });
 
 // @route   POST api/posts/:id
-// @desc    Get post by id
+// @desc    Get A Post By ID
 // @access  Public
 router.get("/:id", (req, res) => {
   Post.findById(req.params.id)
@@ -35,7 +35,7 @@ router.get("/:id", (req, res) => {
 });
 
 // @route   POST api/posts
-// @desc    Create a post
+// @desc    Create A Post
 // @access  Private
 router.post(
   "/",
@@ -50,7 +50,7 @@ router.post(
     const newPost = new Post({
       text: req.body.text,
       name: req.body.name,
-      avatar: req.body.avatar,
+      //avatar: req.body.avatar,
       user: req.user.id
     });
     newPost
