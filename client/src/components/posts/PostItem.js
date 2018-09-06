@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
 
 class PostItem extends Component {
-  onDeleteClick = (e, id) => {
-    this.props.deletePost(id);
+  onDeleteClick = e => {
+    this.props.deletePost(this.props.post._id);
   };
 
   onLikeClick = (e, id) => {
@@ -65,7 +65,7 @@ class PostItem extends Component {
                   <button
                     type="button"
                     className="btn btn-danger mr-1"
-                    onClick={this.onDeleteClick(post._id)}
+                    onClick={this.onDeleteClick}
                   >
                     <i className="fas fa-times" />
                   </button>
