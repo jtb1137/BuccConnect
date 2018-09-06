@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import { deleteComment } from "../../actions/postActions";
 
 class CommentItem extends Component {
-  onDeleteClick = (postId, commentId) => {
-    this.props.deleteComment(postId, commentId);
+  onDeleteClick = e => {
+    this.props.deleteComment(this.props.post._id, this.props.post.comment._id);
   };
 
   render() {
-    const { comment, postId, auth } = this.props;
+    const { comment, auth } = this.props;
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -22,7 +22,7 @@ class CommentItem extends Component {
               <button
                 type="button"
                 className="btn btn-danger mr-1"
-                onClick={this.onDeleteClick(postId, comment._id)}
+                onClick={this.onDeleteClick}
               >
                 <i className="fas fa-times" />
               </button>
