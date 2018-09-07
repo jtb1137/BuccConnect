@@ -5,8 +5,8 @@ import Moment from "react-moment";
 import { deleteEducation } from "../../actions/profileActions";
 
 class Education extends Component {
-  onDeleteClick = id => {
-    this.props.deleteEducation(id);
+  onDeleteClick = e => {
+    this.props.deleteEducation(this.props.education._id);
   };
 
   render() {
@@ -23,10 +23,7 @@ class Education extends Component {
           )}
         </td>
         <td>
-          <button
-            onClick={this.onDeleteClick(edu._id)}
-            className="btn btn-danger"
-          >
+          <button onClick={this.onDeleteClick} className="btn btn-danger">
             Delete
           </button>
         </td>

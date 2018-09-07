@@ -222,7 +222,7 @@ router.post(
 // @desc    Delete experience
 // @access  Private
 router.delete(
-  "/experience/exp_id",
+  "/experience/:exp_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.user.id })
@@ -243,7 +243,7 @@ router.delete(
 // @desc    Delete education
 // @access  Private
 router.delete(
-  "/education/edu_id",
+  "/education/:edu_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.user.id })
