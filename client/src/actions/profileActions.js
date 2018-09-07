@@ -29,6 +29,7 @@ export const getProfile = () => dispatch => {
 
 // Get a profile by user id
 export const getProfileById = id => dispatch => {
+  dispatch(setProfileLoading());
   axios
     .get(`/api/profile/${id}`)
     .then(res =>

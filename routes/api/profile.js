@@ -81,9 +81,9 @@ router.get("/username/:username", (req, res) => {
 // @access  Public
 
 router.get("/:id", (req, res) => {
-  Profile.findById(req.params.id)
+  Profile.findOne({ _id: req.params.id })
     .then(profile => res.json(profile))
-    .catch(() => res.status(404));
+    .catch(err => res.json(err));
 });
 
 // @route   POST api/profile

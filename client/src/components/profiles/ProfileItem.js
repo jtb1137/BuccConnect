@@ -23,6 +23,7 @@ class ProfileItem extends Component {
                 <span>{profile.location}</span>
               )}
             </p>
+
             <Link to={`/profile/${profile._id}`} className="btn btn-info">
               View Profile
             </Link>

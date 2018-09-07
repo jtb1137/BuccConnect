@@ -24,7 +24,7 @@ class Header extends Component {
               <div>
                 {isEmpty(profile.website) ? null : (
                   <a
-                    href={portfolio.website}
+                    href={profile.website}
                     className="text-white p-2"
                     target="_blank"
                   >

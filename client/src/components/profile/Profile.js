@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import Header from "./Profile";
+import Header from "./Header";
 import About from "./About";
 import Credentials from "./Credentials";
 import GithubRepos from "./GithubRepos";
@@ -40,15 +40,18 @@ class Profile extends Component {
                 Back to Profiles
               </Link>
             </div>
-            <div className="col-md-6" />
+            <div className="col-md-6">
+              <Header profile={profile} />
+              <About profile={profile} />
+              <Credentials
+                education={profile.education}
+                experience={profile.experience}
+              />
+              {profile.github ? (
+                <GithubRepos username={profile.github} />
+              ) : null}
+            </div>
           </div>
-          <Header profile={profile} />
-          <About profile={profile} />
-          <Credentials
-            education={profile.education}
-            experience={profile.experience}
-          />
-          {profile.github ? <GithubRepos username={profile.github} /> : null}
         </div>
       );
     }
@@ -63,8 +66,8 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  profile: PropTypes.object.isRequired,
-  getProfileById: PropTypes.func.isRequired
+  getProfileById: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
