@@ -29,7 +29,7 @@ class Dashboard extends Component {
       if (!isEmpty(profile)) {
         dashContent = (
           <div>
-            <h4 className="lead">
+            <h4 className="lead text-center">
               Welcome{" "}
               <Link to={`/profile/${profile.username}`}>{user.name}</Link>
             </h4>

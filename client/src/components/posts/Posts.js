@@ -15,6 +15,7 @@ class Posts extends Component {
 
   render() {
     const { posts, loading } = this.props.post;
+    const { auth } = this.props;
     let postContent;
 
     if (posts === null || loading) {
@@ -27,9 +28,11 @@ class Posts extends Component {
       <div className="container my-3">
         <div className="row">
           <div className="col-md-4">
-            <div className="card card-info mb-3">
-              <div className="card-header">My Profile</div>
-              <div className="card-body">Card Body</div>
+            <div className="card">
+              <div className="card-header">
+                <h4>{auth.user.name}</h4>
+              </div>
+              <div className="card-body" />
             </div>
           </div>
           <div className="col-md-8">
@@ -44,11 +47,13 @@ class Posts extends Component {
 
 Posts.propTypes = {
   getPost: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  post: state.post
+  post: state.post,
+  auth: state.auth
 });
 
 export default connect(
