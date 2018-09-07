@@ -31,7 +31,7 @@ class PostItem extends Component {
     const { post, auth, showActions } = this.props;
 
     return (
-      <div className="card card-body">
+      <div className="card card-body my-3">
         <div className="row">
           <div className="col-md-2">
             <p className="text-center">{post.name}</p>
