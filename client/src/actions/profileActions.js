@@ -27,11 +27,29 @@ export const getProfile = () => dispatch => {
     );
 };
 
+// Get a profile by user id
+export const getProfileById = id => dispatch => {
+  axios
+    .get(`/api/profile/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: null
+      })
+    );
+};
+
 // Get profile by username
 export const getProfileByUsername = username => dispatch => {
-  dispatch(setProfileLoading());
+  //dispatch(setProfileLoading());
   axios
-    .get(`/api/profile/username/${username}`)
+    .get(`/api/profile/${username}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,

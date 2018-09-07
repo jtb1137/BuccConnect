@@ -9,20 +9,21 @@ import Credentials from "./Credentials";
 import GithubRepos from "./GithubRepos";
 import Loading from "../shared/Loading";
 
-import { getProfileByUsername } from "../../actions/profileActions";
+import { getProfileById } from "../../actions/profileActions";
 
 class Profile extends Component {
   componentDidMount() {
-    if (this.props.match.params.username) {
-      this.props.getProfileByUsername(this.props.match.params.username);
-    }
+    this.props.getProfileById(this.props.match.params.id);
+    //if (this.props.match.params.username) {
+    //this.props.getProfileByUsername(this.props.match.params.username);
+    //}
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.profile.profile === null && this.props.profile.loading) {
-      this.props.history.push("/not-found");
-    }
-  }
+  //componentWillReceiveProps(nextProps) {
+  //if (nextProps.profile.profile === null && this.props.profile.loading) {
+  //this.props.history.push("/not-found");
+  //}
+  //}
 
   render() {
     const { profile, loading } = this.props.profile;
@@ -63,7 +64,7 @@ class Profile extends Component {
 
 Profile.propTypes = {
   profile: PropTypes.object.isRequired,
-  getProfileByUsername: PropTypes.func.isRequired
+  getProfileById: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -72,5 +73,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProfileByUsername }
+  { getProfileById }
 )(Profile);

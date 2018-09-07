@@ -45,19 +45,18 @@ class PostForm extends Component {
     const { errors } = this.state;
     return (
       <div className="card card-info">
-        <div className="card-header">New Post:</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <TextAreaFieldGroup
-                placeholder="Create a post."
+                placeholder="Write your message..."
                 name="text"
                 value={this.state.text}
                 onChange={this.onChange}
                 error={errors.text}
               />
             </div>
-            <button type="submit" className="btn">
+            <button type="submit" className="btn btn-block">
               Submit
             </button>
           </form>

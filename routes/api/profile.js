@@ -76,21 +76,14 @@ router.get("/username/:username", (req, res) => {
 });
 
 // @TODO - Fix this
-// @route   GET api/profile/user/user_id
+// @route   GET api/profile/user_id
 // @desc    Get profile by user_id
 // @access  Public
 
-router.get("/user/:user_id", (req, res) => {
-  const errors = {};
-  Profile.findOne({ user: req.params.user_id })
-    .then(profile => {
-      if (!profile) {
-        errors.noprofile = "There is no profile for this user.";
-        res.status(404).json(errors);
-      }
-      res.json(profile);
-    })
-    .catch(errors => res.status(404).json(errors));
+router.get("/:id", (req, res) => {
+  Profile.findById(req.params.id)
+    .then(profile => res.json(profile))
+    .catch(() => res.status(404));
 });
 
 // @route   POST api/profile

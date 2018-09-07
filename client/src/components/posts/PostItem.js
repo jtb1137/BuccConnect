@@ -55,14 +55,14 @@ class PostItem extends Component {
                 <button onClick={this.onRemoveLikeClick} className="btn mr-1">
                   <i className="fas fa-thumbs-down" />
                 </button>
-
-                <Link to={`/post/${post._id}`} className="btn mr-1">
-                  Comments
+                <Link to={`/post/${post._id}`} className="btn btn-default mr-1">
+                  {post.comments.length}{" "}
+                  {post.comments.length === 1 ? "Comment" : "Comments"}
                 </Link>
                 {post.user === auth.user.id ? (
                   <button
                     type="button"
-                    className="btn btn-danger mr-1"
+                    className="btn btn-danger mr-auto"
                     onClick={this.onDeleteClick}
                   >
                     <i className="fas fa-times" />

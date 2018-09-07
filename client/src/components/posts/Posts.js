@@ -26,7 +26,13 @@ class Posts extends Component {
     return (
       <div className="container my-3">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-4">
+            <div className="card card-info mb-3">
+              <div className="card-header">My Profile</div>
+              <div className="card-body">Card Body</div>
+            </div>
+          </div>
+          <div className="col-md-8">
             <PostForm />
             {postContent}
           </div>

@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
     .catch(() => res.status(404));
 });
 
-// @route   POST api/posts/:id
+// @route   GET api/posts/:id
 // @desc    Get A Post By ID
 // @access  Public
 router.get("/:id", (req, res) => {
