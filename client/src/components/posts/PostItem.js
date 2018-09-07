@@ -46,12 +46,16 @@ class PostItem extends Component {
                       "text-info": this.userLiked(post.likes)
                     })}
                   />
+                </button>
+
+                <button className="btn disabled mr-1">
                   <span>{post.likes.length}</span>
                 </button>
+
                 <button onClick={this.onRemoveLikeClick} className="btn mr-1">
-                  <i className="text-info fas fa-thumbs-down" />
-                  <span>{post.likes.length}</span>
+                  <i className="fas fa-thumbs-down" />
                 </button>
+
                 <Link to={`/post/${post._id}`} className="btn mr-1">
                   Comments
                 </Link>
