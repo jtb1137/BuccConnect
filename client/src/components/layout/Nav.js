@@ -55,7 +55,7 @@ class Nav extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
+      <nav className="navbar navbar-expand-sm navbar-light bg-info">
         <div className="container">
           <Link to="/" className="navbar-brand">
             BuccConnect

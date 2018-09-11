@@ -30,19 +30,23 @@ class Education extends Component {
       </tr>
     ));
     return (
-      <div>
-        <h4 className="mb-3">Education</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>School</th>
-              <th>Degree</th>
-              <th>Years</th>
-              <th />
-            </tr>
-            {education}
-          </thead>
-        </table>
+      <div className="card">
+        <div className="card-header">
+          <h4>Education</h4>
+        </div>
+        <div className="card-body">
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">School</th>
+                <th scope="col">Degree</th>
+                <th scope="col">Years</th>
+                <th scope="col" />
+              </tr>
+              {education}
+            </thead>
+          </table>
+        </div>
       </div>
     );
   }

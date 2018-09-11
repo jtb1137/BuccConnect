@@ -181,7 +181,7 @@ class CreateProfile extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
-            <Link to="/dashbaord" className="btn btn-light">
+            <Link to="/feed" className="btn btn-light">
               {" "}
               Go Back
             </Link>

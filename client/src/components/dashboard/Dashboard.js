@@ -30,8 +30,7 @@ class Dashboard extends Component {
         dashContent = (
           <div>
             <h4 className="lead text-center">
-              Welcome{" "}
-              <Link to={`/profile/${profile.username}`}>{user.name}</Link>
+              Welcome <Link to={`/profile/${profile._id}`}>{user.name}</Link>
             </h4>
             <ProfileButtons />
             <Experience experience={profile.experience} />
@@ -60,8 +59,10 @@ class Dashboard extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12 text-center">
-            <div className="card my-3">
-              <h1 className="display-4">Dashboard</h1>
+            <div className="card my-3 pb-3">
+              <div className="card-header">
+                <h1 className="display-4">Dashboard</h1>
+              </div>
               {dashContent}
             </div>
           </div>

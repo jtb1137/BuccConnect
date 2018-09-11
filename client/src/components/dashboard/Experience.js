@@ -30,19 +30,23 @@ class Experience extends Component {
       </tr>
     ));
     return (
-      <div>
-        <h4 className="mb-3">Experience</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Title</th>
-              <th>Years</th>
-              <th />
-            </tr>
-            {experience}
-          </thead>
-        </table>
+      <div className="card">
+        <div className="card-header">
+          <h4>Experience</h4>
+        </div>
+        <div className="card-body">
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Title</th>
+                <th scope="col">Years</th>
+                <th scope="col" />
+              </tr>
+              {experience}
+            </thead>
+          </table>
+        </div>
       </div>
     );
   }
