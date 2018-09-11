@@ -31,7 +31,22 @@ class PostItem extends Component {
     const { post, auth, showActions } = this.props;
 
     return (
-      <div className="card card-body my-3">
+      <div className="my-3">
+        <div className="card">
+          <div className="card-header">
+            {post.name}
+            {post.user === auth.user.id ? (
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={this.onDeleteClick}
+              >
+                <i className="fas fa-times" />
+              </button>
+            ) : null}
+          </div>
+          <div className="card-body">{post.text}</div>
+        </div>
         <div className="row">
           <div className="col-md-2">
             <p className="text-center">{post.name}</p>
@@ -59,15 +74,6 @@ class PostItem extends Component {
                   {post.comments.length}{" "}
                   {post.comments.length === 1 ? "Comment" : "Comments"}
                 </Link>
-                {post.user === auth.user.id ? (
-                  <button
-                    type="button"
-                    className="btn btn-danger mr-auto"
-                    onClick={this.onDeleteClick}
-                  >
-                    <i className="fas fa-times" />
-                  </button>
-                ) : null}
               </span>
             ) : null}
           </div>

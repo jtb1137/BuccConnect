@@ -7,6 +7,7 @@ import Loading from "../shared/Loading";
 import Feed from "./Feed";
 
 import { getPosts } from "../../actions/postActions";
+import ProfileSmall from "../profile/ProfileSmall";
 
 class Posts extends Component {
   componentDidMount() {
@@ -27,15 +28,10 @@ class Posts extends Component {
     return (
       <div className="container my-3">
         <div className="row">
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-header">
-                <h4>{auth.user.name}</h4>
-              </div>
-              <div className="card-body" />
-            </div>
+          <div className="col-md-4 col-lg-3 ">
+            <ProfileSmall auth={auth} />
           </div>
-          <div className="col-md-8">
+          <div className="col-md-8 col-lg-9 ">
             <PostForm />
             {postContent}
           </div>

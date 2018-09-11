@@ -59,9 +59,11 @@ class Dashboard extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <h1 className="display-4">Dashboard</h1>
-            {dashContent}
+          <div className="col-md-12 text-center">
+            <div className="card my-3">
+              <h1 className="display-4">Dashboard</h1>
+              {dashContent}
+            </div>
           </div>
         </div>
       </div>

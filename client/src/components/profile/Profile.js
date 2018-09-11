@@ -36,22 +36,22 @@ class Profile extends Component {
         <div>
           <div className="row">
             <div className="col-md-6">
-              <Link to="/profiles" className="btn float-left mb-3">
+              <Link
+                to="/profiles"
+                className="btn btn-dark float-left mb-3 my-3"
+              >
                 Back to Profiles
               </Link>
             </div>
-            <div className="col-md-6">
-              <Header profile={profile} />
-              <About profile={profile} />
-              <Credentials
-                education={profile.education}
-                experience={profile.experience}
-              />
-              {profile.github ? (
-                <GithubRepos username={profile.github} />
-              ) : null}
-            </div>
+            <div className="col-md-6" />
           </div>
+          <Header profile={profile} />
+          <About profile={profile} />
+          <Credentials
+            education={profile.education}
+            experience={profile.experience}
+          />
+          {profile.github ? <GithubRepos username={profile.github} /> : null}
         </div>
       );
     }
